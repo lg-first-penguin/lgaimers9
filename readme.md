@@ -1,5 +1,38 @@
 우리팀용 비공개 파이프라인입니다. (v1)
 
+## environments
+
+```
+
+> wsl -l -v
+  NAME              STATE           VERSION
+* Ubuntu            Running         2
+  docker-desktop    Stopped         2
+
+> wsl -d Ubuntu -e lsb_release -a
+No LSB modules are available.
+Distributor ID: Ubuntu
+Description:    Ubuntu 24.04.4 LTS
+Release:        24.04
+Codename:       noble
+
+
+  python 3.11,
+
+  "pandas==2.0.3" \
+  "numpy==1.26.4" \
+  "scipy==1.15.3" \
+  "scikit-learn==1.8.0" \
+  "joblib==1.5.3" \
+  "transformers==4.46.3" \
+  "accelerate==1.9.0" \
+  "tqdm==4.66.4" \
+  "loguru==0.7.2" \
+
+```
+
+## 시스템 구조
+
 ```
 
 lgaimers9 (루트 폴더)
@@ -19,6 +52,22 @@ lgaimers9 (루트 폴더)
 └── dopip.py (전체 파이프라인 제어 오케스트레이터 및 리트레인 수행 드라이버)
 
 ```
+
+## 세팅 및 다운
+
+#### 1. 원격 Private 레포지토리 코드를 내 컴퓨터로 복제 (경로 주소는 본인 레포 주소 입력)
+```
+git clone https://github.com/kau-newbie/lgaimers9
+```
+
+#### 2. 복제된 프로젝트 폴더 내부로 이동
+```
+cd lgaimers9
+```
+
+### 3. 세팅
+
+[여기](https://tropical-boa-e17.notion.site/3b526ae03b6380709318d6a9c98a33d6?source=copy_link)
 
 ## <주의사항>
 
