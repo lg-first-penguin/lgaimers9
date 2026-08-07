@@ -81,7 +81,7 @@ def main():
     eval_model.fit(train_pool, eval_set=val_pool, use_best_model=True)
     
     # 사후 활용을 위해 베스트 이터레이션 수 등을 모델 객체에 동적 바인딩
-    eval_model.best_iteration_ = eval_model.get_best_iteration()
+    # eval_model.best_iteration_ = eval_model.get_best_iteration() <-- err
 
     with open(TEMP_MODEL_PATH, 'wb') as f:
         pickle.dump(eval_model, f)

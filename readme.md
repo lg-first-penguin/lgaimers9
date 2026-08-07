@@ -25,10 +25,13 @@ lgaimers9 (루트 폴더)
 - ai 시킨거라 catboost로 했을 때 한 번 돌아가는 것만 확인해봤습니다.
 
 - open/data/ 아래 직접 데이터 넣어주셔야 합니다.
+> https://dacon.io/competitions/official/236743/data
 
 - 본 파이프라인은 CatBoost 기준으로 만들었습니다만, 확장성을 고려하긴 했습니다. 
 > 검증은 안해봤습니다.
 
+- `iteration` 횟수가 하드웨어따라 너무 많을 수도 있습니다. 줄이시면 되겠습니다
+> 지금 기본 코드로 넣어둔게 아마 404번 정도 돌 겁니다.
 
 ## <코드 설명>
 
@@ -42,3 +45,5 @@ submit 제출파일 안 model에 .pkl 모델 파일을 넣어줍니다.
 - 그 외 코드 파일들
 	- train/test_x30 : 24년도의 제일 마지막 경기부터 30%(24년도의)를 잘라 테스트 데이터로 쓴 파일들입니다.
 	- train/test_rd30 : 19-24년 전체 데이터 중 30%를 랜덤하게 잘라 테스트 데이터로 쓴 파일들입니다.
+
+자세한(?) 설명은 : [여기](https://tropical-boa-e17.notion.site/3b526ae03b6380709318d6a9c98a33d6?source=copy_link)

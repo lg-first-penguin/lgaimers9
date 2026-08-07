@@ -1,10 +1,36 @@
-# dopip.py
+import sys
 import os
+# 현재 실행 파일이 있는 위치를 파이썬 모듈 검색 경로에 수동 등록
+sys.path.append(os.path.dirname(os.path.abspath(__file__)))
+# dopip.py
 import shutil
 import subprocess
 import pickle
 import pandas as pd
 from catboost import CatBoostClassifier, Pool
+
+ID_COL = "row_id"
+TARGET_COL = "control_success"
+CATEGORICAL_FEATURES = ['top_bottom', 'game_type', 'base_state']
+
+def get_numbered_path(base_dest_path):
+    """
+    파일 경로를 받아 동일 파일이 존재할 경우 _v1, _v2 형식으로 
+    숫자를 올려 중복되지 않는 안전한 경로를 반환합니다.
+    """
+    if not os.path.exists(base_dest_path):
+        return base_dest_path
+    
+    # 확장자와 파일명 분리 (예: ./open/former_model/former_latest_model , .pkl)
+    base, ext = os.path.splitext(base_dest_path)
+    counter = 1
+    
+    # 중복되지 않는 숫자가 나올 때까지 카운터 증가 루프
+    while True:
+        new_path = f"{base}_v{counter}{ext}"
+        if not os.path.exists(new_path):
+            return new_path
+        counter += 1
 
 def run_script(script_path):
     process = subprocess.Popen(["python", script_path], stdout=subprocess.PIPE, stderr=subprocess.STDOUT, text=True)
@@ -41,10 +67,15 @@ def main():
         result = f.read().strip()
         
     latest_model_src = "./open/temp/latest_model.pkl"
-    former_model_dest = "./open/former_model/former_latest_model.pkl"
+    former_model_dir = "./open/former_model"
     ref_model_path = "./open/reference/best_model.pkl"
     former_ref_dest = "./open/former_model/former_best_model.pkl"
     
+    base_former_dest = os.path.join(former_model_dir, "former_latest_model.pkl")
+    former_model_dest = get_numbered_path(base_former_dest)
+    base_ref_dest = os.path.join(former_model_dir, "former_best_model.pkl")
+    former_ref_dest = get_numbered_path(base_ref_dest)
+
     # 규칙 요건 분기 처리 
     # [조건A] 방금 막 훈련시켰던 모델은 무조건 former_model 폴더로 복사 이동 처리
     if os.path.exists(latest_model_src):
@@ -67,7 +98,7 @@ def main():
         # temp에 생성된 최신 모델 삭제 (기존 temp 모델 삭제 조건 반영)
         if os.path.exists(latest_model_src):
             os.remove(latest_model_src)
-            print("🗑️시 버퍼(temp) 내 최신 모델을 비웠습니다.")
+            print("임시 버퍼(temp) 내 최신 모델을 비웠습니다.")
 
     # Step 3. 최종 확정된 Reference 모델 기반 전체 데이터(2019~2024) 통합 완습 (Retrain) 후 submit 구조 구축
     print("\n--- [Step 3] 최종 검증 완료본 기반 전체 시즌 데이터 통합 완습 (Full Retrain) ---")
