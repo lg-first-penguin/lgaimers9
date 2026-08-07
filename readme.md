@@ -59,9 +59,17 @@ lgaimers9 (루트 폴더)
 
 ## 세팅 및 다운
 
-#### 0. 세팅
+#### 0. ubuntu 리눅스에서
 
-[여기](https://tropical-boa-e17.notion.site/3b526ae03b6380709318d6a9c98a33d6?source=copy_link)
+(Windows면)
+
+```bash
+
+wsl -d ubuntu
+
+cd ~/
+
+```
 
 #### 1. 원격 Private 레포지토리 코드를 내 컴퓨터로 복제 
 ```
@@ -72,6 +80,9 @@ git clone https://github.com/kau-newbie/lgaimers9
 ```
 cd lgaimers9
 ```
+#### 3. venv 환경 세팅
+
+[여기](https://tropical-boa-e17.notion.site/3b526ae03b6380709318d6a9c98a33d6?source=copy_link)
 
 ## <주의사항>
 
