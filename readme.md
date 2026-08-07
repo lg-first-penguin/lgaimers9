@@ -1,5 +1,9 @@
 우리팀용 비공개 파이프라인입니다. (v1)
 
+ubuntu 24.04.4 LTS를 Windows WSL 기능을 사용해 만들었습니다.
+
+환경세팅(패키지나 라이브러리)은 대회 서버 기본 내장 패키지로 맞추었습니다.
+
 ## environments
 
 ```
@@ -31,7 +35,7 @@ Codename:       noble
 
 ```
 
-## 시스템 구조
+## 파이프라인 시스템 구조
 
 ```
 
@@ -55,7 +59,11 @@ lgaimers9 (루트 폴더)
 
 ## 세팅 및 다운
 
-#### 1. 원격 Private 레포지토리 코드를 내 컴퓨터로 복제 (경로 주소는 본인 레포 주소 입력)
+#### 0. 세팅
+
+[여기](https://tropical-boa-e17.notion.site/3b526ae03b6380709318d6a9c98a33d6?source=copy_link)
+
+#### 1. 원격 Private 레포지토리 코드를 내 컴퓨터로 복제 
 ```
 git clone https://github.com/kau-newbie/lgaimers9
 ```
@@ -65,22 +73,18 @@ git clone https://github.com/kau-newbie/lgaimers9
 cd lgaimers9
 ```
 
-### 3. 세팅
-
-[여기](https://tropical-boa-e17.notion.site/3b526ae03b6380709318d6a9c98a33d6?source=copy_link)
-
 ## <주의사항>
 
 - ai 시킨거라 catboost로 했을 때 한 번 돌아가는 것만 확인해봤습니다.
 
-- open/data/ 아래 직접 데이터 넣어주셔야 합니다.
+- open/data/ 아래 직접 데이터 다운받아서 넣어주셔야 합니다. (아래 대회 데이터다운링크)
 > https://dacon.io/competitions/official/236743/data
 
-- 본 파이프라인은 CatBoost 기준으로 만들었습니다만, 확장성을 고려하긴 했습니다. 
+- 본 파이프라인은 CatBoost 기준으로 만들었습니다. 하지만 확장성을 고려해서 만들어라고 제미나이 시키긴 했습니다. 
 > 검증은 안해봤습니다.
 
-- `iteration` 횟수가 하드웨어따라 너무 많을 수도 있습니다. 줄이시면 되겠습니다
-> 지금 기본 코드로 넣어둔게 아마 404번 정도 돌 겁니다.
+- `iteration` 횟수가 하드웨어따라 너무 버거울 수도 있습니다. 직접 알맞게 줄이시면 되겠습니다.
+> 지금 기본 코드로 넣어둔게 아마 400번 정도 돌 겁니다.
 
 ## <코드 설명>
 
