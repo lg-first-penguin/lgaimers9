@@ -3,7 +3,7 @@ open/data/
 
 # 로컬에서 생성되는 임시 및 결과 가중치 제외
 open/temp/
-submit/model/
+# submit/model/
 output/
 
 # 파이썬 캐시 파일 제외
