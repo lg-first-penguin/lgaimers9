@@ -3,8 +3,8 @@ open/data/
 
 # 로컬에서 생성되는 임시 및 결과 가중치 제외
 open/temp/
-# submit/model/
-output/
+submit/model/
+
 
 # 파이썬 캐시 파일 제외
 __pycache__/
@@ -12,3 +12,10 @@ __pycache__/
 
 # venv
 .venv
+
+# 잡다한거 제외
+EXPERIMENTS.md
+CLAUDE.md
+
+# 모델
+open/former_model
